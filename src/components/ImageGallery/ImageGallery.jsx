@@ -71,11 +71,17 @@ class ImageGallery extends Component {
     this.setState({ isClick: true });
   }
   closeModal(e) {
-    console.log(e.target);
     if (e.target.localName !== 'img') {
       this.setState({ isClick: false });
     }
   }
+  //////////////////////////////////////////////////////////
+  closeK = e => {
+    if ('Escape' === e.key) {
+      this.setState({ isClick: false });
+    }
+  };
+  //////////////////////////////////////////////////////////
   render() {
     return (
       <>
@@ -95,6 +101,7 @@ class ImageGallery extends Component {
           <Modal
             renderImage={this.state.renderImage}
             close={this.closeModal.bind(this)}
+            closeKey={this.closeK} //////////////////////////////////////////////////////////
           />
         )}
 
